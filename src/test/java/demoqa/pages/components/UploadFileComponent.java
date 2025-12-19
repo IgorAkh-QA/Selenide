@@ -1,4 +1,4 @@
-package pages.components;
+package demoqa.pages.components;
 
 public class UploadFileComponent {
 }

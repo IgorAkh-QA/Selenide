@@ -1,10 +1,8 @@
-package pages;
+package demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import pages.components.CalendarComponent;
-import pages.components.RegistrationResultsModal;
-
-import javax.security.auth.Subject;
+import demoqa.pages.components.CalendarComponent;
+import demoqa.pages.components.RegistrationResultsModal;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -64,7 +62,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setBirthDate(String day, String month, String year){
-        dateOfBirthInput.click();
+        $("#dateOfBirthInput").click();
         calendarComponent.setDate(day, month, year);
         return this;
     }

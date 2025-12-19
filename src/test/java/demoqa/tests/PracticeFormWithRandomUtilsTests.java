@@ -4,84 +4,88 @@ package demoqa.tests;
 import demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
-public class PracticeFormWithTestDataTests extends TestData {
-//    String userName = "Firstname",
+import static demoqa.utils.RandomUtils.randomString;
+
+public class PracticeFormWithRandomUtilsTests extends TestBase {}
+//    String userName = randomString(10),
 //            userLastName = "Lastname",
-//            Email = "Firstname@gmail.com",
-//            Mobile = "7123456789",
-//            Address = "Dom ololoshi",
-//            Subject = "a",
-//            FileName = ("FOMA.jpg"),
-//            WtfValue = ("Pan"),
-//            Day = "24",
-//            Month = "February",
-//            Year = "2000";
-    //Можно объявить без присваивания значений
-    static String
-        userName,
-        userLastName,
-        Address,
-        Email,
-        Mobile,
-        Subject,
-        FileName,
-        WtfValue,
-        Day,
-        Month,
-        Year;
-    @Test
-    void FillingFormPracticeTest() {
-
-//        String userName = "Firstname";
-//        String userLastName = "Lastname";
-//        String Email = "Firstname@gmail.com";
-//        String Mobile = "7123456789";
-//        String Address = "Dom ololoshi";
-//        String Subject = "a";
-//        String FileName = ("FOMA.jpg");
-//        String WtfValue = ("Pan");
-//        String Day = "24";
-//        String Month = "February";
-//        String Year = "2000";
-
-        //File file = new File("src/test/resources/FOMA.jpg");
-
-        new RegistrationPage().openPage()
-                .setFirstName(userName)
-                .setLastName(userLastName)
-                .setEmail(Email)
-                .setPhone(Mobile)
-                .setGender("Female")
-                .setBirthDate(Day,Month,Year)
-                .setSubjects(Subject)
-                .setHobbies()
-                .uploadFile(FileName)
-                .setAddress(Address)
-                .stateChooser()
-                .cityChooser()
-                .wtf(WtfValue)
-                .submitRegDateButton();
-
-
-
-
-        //$("#file-upload").uploadFromClasspath("readme.txt");
-        // don't forget to submit!
-
-
-        registrationPage.verifyResultsModalAppears().
-                verifyResults("Student Name", userName + " " + userLastName)
-               .verifyResults("Gender", "Female")
-                .verifyResults("Student Email", Email)
-               .verifyResults("Mobile", Mobile)
-                .verifyResults("Address", Address)
-                .verifyResults("Picture", FileName)
-               .verifyResults("Date of Birth", Day + " " + Month + "," + Year);
-
-
-
-    }
-}
+//            Email = "Firstname@gmail.com";
+////            Mobile = "7123456789",
+////            Address = "Dom ololoshi",
+////            Subject = "a",
+////            FileName = ("FOMA.jpg"),
+////            WtfValue = ("Pan"),
+////            Day = "24",
+////            Month = "February",
+////            Year = "2000";
+//    //Можно объявить без присваивания значений
+//    static String
+//        //userName,
+//        //userLastName,
+//        Address,
+//        //Email,
+//        Mobile,
+//        Subject,
+//        FileName,
+//        WtfValue,
+//        Month;
+//
+//    static int
+//    Day,
+//    Year;
+//    @Test
+//    void FillingFormPracticeTest() {
+//
+////        String userName = "Firstname";
+////        String userLastName = "Lastname";
+////        String Email = "Firstname@gmail.com";
+////        String Mobile = "7123456789";
+////        String Address = "Dom ololoshi";
+////        String Subject = "a";
+////        String FileName = ("FOMA.jpg");
+////        String WtfValue = ("Pan");
+////        String Day = "24";
+////        String Month = "February";
+////        String Year = "2000";
+//
+//        //File file = new File("src/test/resources/FOMA.jpg");
+//
+//        new RegistrationPage().openPage()
+//                .setFirstName(userName)
+//                .setLastName(userLastName)
+//                .setEmail(Email)
+//                .setPhone(Mobile)
+//                .setGender("Female")
+//                .setBirthDate(Day,Month,Year)
+//                .setSubjects(Subject)
+//                .setHobbies()
+//                .uploadFile(FileName)
+//                .setAddress(Address)
+//                .stateChooser()
+//                .cityChooser()
+//                .wtf(WtfValue)
+//                .submitRegDateButton();
+//
+//
+//
+//
+//        //$("#file-upload").uploadFromClasspath("readme.txt");
+//        // don't forget to submit!
+//
+//
+//        registrationPage.verifyResultsModalAppears().
+//                verifyResults("Student Name", userName + " " + userLastName)
+//               .verifyResults("Gender", "Female")
+//                .verifyResults("Student Email", Email)
+//               .verifyResults("Mobile", Mobile)
+//                .verifyResults("Address", Address)
+//                .verifyResults("Picture", FileName)
+//               .verifyResults("Date of Birth", Day + " " + Month + "," + Year);
+//
+//
+//
+//    }
+//}
 
 /*/@Test
         void FillingFormPracticeTest(){

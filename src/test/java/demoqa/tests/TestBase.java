@@ -1,10 +1,11 @@
-package demoqa;
+package demoqa.tests;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.chrome.ChromeOptions;
-import pages.RegistrationPage;
+import demoqa.pages.RegistrationPage;
 
 public class TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
@@ -17,6 +18,10 @@ public class TestBase {
         Configuration.browserSize = "1920x1080";
         Configuration.browser = "chrome";
         Configuration.baseUrl = "https://demoqa.com";
+
+    }
+    @BeforeEach
+    void beforeEach() {
 
     }
 }

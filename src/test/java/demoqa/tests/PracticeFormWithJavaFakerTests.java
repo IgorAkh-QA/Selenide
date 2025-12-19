@@ -1,40 +1,43 @@
 package demoqa.tests;
 
-import demoqa.utils.RandomUtils;
-import org.junit.jupiter.api.Test;
+import com.github.javafaker.Faker;
 import demoqa.pages.RegistrationPage;
+import org.junit.jupiter.api.Test;
 
-import static demoqa.utils.RandomUtils.randomString;
+import java.util.Locale;
 
-public class PracticeFormWithPageObjectsTests extends TestBase {
+public class PracticeFormWithJavaFakerTests extends TestBase {
 
     @Test
     void FillingFormPracticeTest() {
+        //Faker faker = new Faker();
+        Faker faker = new Faker(new Locale("en"));
+        TestData testData = new TestData();
+        String Address = faker.address().fullAddress();
 
-        String userName = "UserName";
-        String LastName = "Lastname";
-        String Email = "Firstname@gmail.com";
-        String Mobile = "7123456789";
-        String Address = "Dom ololoshi";
+
+        String Mobile = faker.number().digits(10);
         String Subject = "a";
-        String FileName = ("FOMA.jpg");
-        String WtfValue = ("Pan");
-        String Day = "24";
-        String Month = "February";
-        String Year = "2000";
 
+        String WtfValue = ("Pan");
+        //int Day = faker.number().numberBetween(1,28);
+        //String Month = "February";
+        //int Year = faker.number().numberBetween(1900,2026),
+        String year = faker.number().numberBetween(1940,2005) + "";
+
+        String dateBirth = String.format("%s %s,%s",testData.day, testData.month, testData.year);
         //File file = new File("src/test/resources/FOMA.jpg");
 
         new RegistrationPage().openPage()
-                .setFirstName(userName)
-                .setLastName(LastName)
-                .setEmail(Email)
-                .setPhone(Mobile)
-                .setGender("Female")
-                .setBirthDate(Day,Month,Year)
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setEmail(testData.Email)
+                .setPhone(testData.mobile)
+                .setGender(testData.gender)
+                .setBirthDate(testData.day, testData.month, testData.year)
                 .setSubjects(Subject)
                 .setHobbies()
-                .uploadFile(FileName)
+                .uploadFile(testData.FileName)
                 .setAddress(Address)
                 .stateChooser()
                 .cityChooser()
@@ -49,17 +52,18 @@ public class PracticeFormWithPageObjectsTests extends TestBase {
 
 
         registrationPage.verifyResultsModalAppears().
-                verifyResults("Student Name", userName + " " + LastName)
-               .verifyResults("Gender", "Female")
-                .verifyResults("Student Email", Email)
-               .verifyResults("Mobile", Mobile)
+                verifyResults("Student Name", testData.firstName + " " + testData.lastName)
+               .verifyResults("Gender", testData.gender)
+                .verifyResults("Student Email", testData.Email)
+               .verifyResults("Mobile", testData.mobile)
                 .verifyResults("Address", Address)
-                .verifyResults("Picture", FileName)
-               .verifyResults("Date of Birth", Day + " " + Month + "," + Year);
+                .verifyResults("Picture", testData.FileName)
+               .verifyResults("Date of Birth", testData.dateBirth );
 
 
 
     }
+
 }
 
 /*/@Test

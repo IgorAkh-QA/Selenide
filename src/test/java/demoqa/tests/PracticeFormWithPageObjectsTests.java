@@ -1,70 +1,68 @@
-package demoqa;
+package demoqa.tests;
 
-
+import demoqa.utils.RandomUtils;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
-import pages.components.CalendarComponent;
-import pages.components.RegistrationResultsModal;
+import demoqa.pages.RegistrationPage;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import static demoqa.utils.RandomUtils.randomString;
 
 public class PracticeFormWithPageObjectsTests extends TestBase {
 
-    @Test
-    void FillingFormPracticeTest() {
-
-        String userName = "Firstname";
-        String LastName = "Lastname";
-        String Email = "Firstname@gmail.com";
-        String Mobile = "7123456789";
-        String Address = "Dom ololoshi";
-        String Subject = "a";
-        String FileName = ("FOMA.jpg");
-        String WtfValue = ("Pan");
-        String Day = "24";
-        String Month = "February";
-        String Year = "2000";
-
-        //File file = new File("src/test/resources/FOMA.jpg");
-
-        new RegistrationPage().openPage()
-                .setFirstName(userName)
-                .setLastName(LastName)
-                .setEmail(Email)
-                .setPhone(Mobile)
-                .setGender("Female")
-                .setBirthDate(Day,Month,Year)
-                .setSubjects(Subject)
-                .setHobbies()
-                .uploadFile(FileName)
-                .setAddress(Address)
-                .stateChooser()
-                .cityChooser()
-                .wtf(WtfValue)
-                .submitRegDateButton();
-
-
-
-
-        //$("#file-upload").uploadFromClasspath("readme.txt");
-        // don't forget to submit!
-
-
-        registrationPage.verifyResultsModalAppears().
-                verifyResults("Student Name", userName + " " + LastName)
-               .verifyResults("Gender", "Female")
-                .verifyResults("Student Email", Email)
-               .verifyResults("Mobile", Mobile)
-                .verifyResults("Address", Address)
-                .verifyResults("Picture", FileName)
-               .verifyResults("Date of Birth", Day + " " + Month + "," + Year);
-
-
-
-    }
-}
+//    @Test
+//    @Disabled
+//    void FillingFormPracticeTest() {
+//
+//        String userName = "UserName";
+//        String LastName = "Lastname";
+//        String Email = "Firstname@gmail.com";
+//        String Mobile = "7123456789";
+//        String Address = "Dom ololoshi";
+//        String Subject = "a";
+//        String FileName = ("FOMA.jpg");
+//        String WtfValue = ("Pan");
+//        int Day = 24;
+//        String Month = "February";
+//        int Year = 2000;
+//
+//        //File file = new File("src/test/resources/FOMA.jpg");
+//
+//        new RegistrationPage().openPage()
+//                .setFirstName(userName)
+//                .setLastName(LastName)
+//                .setEmail(Email)
+//                .setPhone(Mobile)
+//                .setGender("Female")
+//                .setBirthDate(Day,Month,Year)
+//                .setSubjects(Subject)
+//                .setHobbies()
+//                .uploadFile(FileName)
+//                .setAddress(Address)
+//                .stateChooser()
+//                .cityChooser()
+//                .wtf(WtfValue)
+//                .submitRegDateButton();
+//
+//
+//
+//
+//        //$("#file-upload").uploadFromClasspath("readme.txt");
+//        // don't forget to submit!
+//
+//
+//        registrationPage.verifyResultsModalAppears().
+//                verifyResults("Student Name", userName + " " + LastName)
+//               .verifyResults("Gender", "Female")
+//                .verifyResults("Student Email", Email)
+//               .verifyResults("Mobile", Mobile)
+//                .verifyResults("Address", Address)
+//                .verifyResults("Picture", FileName)
+//               .verifyResults("Date of Birth", Day + " " + Month + "," + Year);
+//
+//
+//
+//    }
+//}
 
 /*/@Test
         void FillingFormPracticeTest(){
@@ -111,3 +109,4 @@ public class PracticeFormWithPageObjectsTests extends TestBase {
 
 
     }/*/
+}

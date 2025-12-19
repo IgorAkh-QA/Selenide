@@ -1,9 +1,24 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '3.0.1'
 }
 
 group = 'own.akhmet'
 version = '1.0-SNAPSHOT'
+
+allure {
+    report {
+        version.set("2.25.0")
+    }
+    adapter { // отвечает за появление папочки build/allure-results
+        aspectjWeaver.set(true) // Обработка аннотации @Step
+        frameworks {
+            junit5 { // Название фреймворка
+                adapterVersion.set("2.19.0") //версия интеграции фреймворка и Allure
+            }
+        }
+    }
+}
 
 repositories {
     mavenCentral()
@@ -14,11 +29,16 @@ dependencies {
 
     testImplementation (
             "com.codeborne:selenide:7.12.0",
-            "org.junit.jupiter:junit-jupiter:6.0.1"
+            "org.junit.jupiter:junit-jupiter:6.0.1",
+            "org.slf4j:slf4j-simple:2.0.17",
+            "com.github.javafaker:javafaker:0.15",
+            "io.qameta.allure:allure-selenide:2.32.0"
     )
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+
 test {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 }
