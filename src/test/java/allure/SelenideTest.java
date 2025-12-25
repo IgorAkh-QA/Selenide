@@ -5,6 +5,7 @@ import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
 import static org.openqa.selenium.By.linkText;
@@ -24,6 +25,7 @@ public class SelenideTest {
        // sleep(600_000);
         $("#pull-requests-tab").click();
         $(withText("#91")).should(Condition.exist);
+        $("#issue_91_link").shouldHave(text("Fix pull request close test"));
 
     }
 }

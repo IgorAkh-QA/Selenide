@@ -7,6 +7,9 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
+import static allure.StepsTest.PULL_REQUEST_NUMBER;
+import static allure.StepsTest.PULL_REQUEST_TITLE;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -41,6 +44,13 @@ public class WebSteps {
     public void shouldSeePullRequestWithNumber(int pullRequestNumber) {
         $(withText("#" + pullRequestNumber)).should(Condition.exist);
     }
+
+    @Step("Проверяем, что тайт Pull-requset с номером "  + PULL_REQUEST_NUMBER +
+            " +cодержит текст: " + PULL_REQUEST_TITLE)
+    public void pullRequestTitleIsCorrect(String pullRequestTitle) {
+        $("#issue_91_link").shouldHave(text(pullRequestTitle));
+    }
+
     @Attachment(value = "Screenshot", type = "image/png", fileExtension = "png")
     public byte[] takeScreensgot(){
         return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
