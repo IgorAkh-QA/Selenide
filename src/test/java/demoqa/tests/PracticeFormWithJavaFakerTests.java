@@ -2,12 +2,15 @@ package demoqa.tests;
 
 import com.github.javafaker.Faker;
 import demoqa.pages.RegistrationPage;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.util.Locale;
 
-public class PracticeFormWithJavaFakerTests extends TestBase {
+import static io.qameta.allure.Allure.step;
 
+public class PracticeFormWithJavaFakerTests extends TestBaseExtendedRemoteForFilingForm {
+@Tag("Filling_form")
     @Test
     void FillingFormPracticeTest() {
         //Faker faker = new Faker();
@@ -15,20 +18,10 @@ public class PracticeFormWithJavaFakerTests extends TestBase {
         TestData testData = new TestData();
         String Address = faker.address().fullAddress();
 
-
-        String Mobile = faker.number().digits(10);
         String Subject = "a";
-
         String WtfValue = ("Pan");
-        //int Day = faker.number().numberBetween(1,28);
-        //String Month = "February";
-        //int Year = faker.number().numberBetween(1900,2026),
-        String year = faker.number().numberBetween(1940,2005) + "";
-
-        String dateBirth = String.format("%s %s,%s",testData.day, testData.month, testData.year);
-        //File file = new File("src/test/resources/FOMA.jpg");
-
-        new RegistrationPage().openPage()
+        new RegistrationPage()
+                .openPage()
                 .setFirstName(testData.firstName)
                 .setLastName(testData.lastName)
                 .setEmail(testData.Email)
