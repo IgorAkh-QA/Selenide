@@ -34,7 +34,16 @@ public class RegistrationPage {
     public RegistrationPage openPage(){
         open("/automation-practice-form");
         $(".text-center").shouldHave(text(TITLE_TEXT));
+
+        return this;
+    }
+    @Step("Убираем гугл баннеры")
+    public RegistrationPage clearingPageFromAdvertising(){
         executeJavaScript("$('footer').remove()");
+        executeJavaScript("$('iframe').remove()");
+        executeJavaScript("$('[title=\"3rd party ad content\"]').remove()");
+        executeJavaScript("$('[data-google-container-id=\"1\"]').remove()");
+        executeJavaScript("$('[data-google-container-id=\"2\"]').remove()");
         executeJavaScript("$('[data-google-container-id=\"3\"]').remove()");
         return this;
     }

@@ -22,6 +22,7 @@ public class PracticeFormWithJavaFakerTests extends TestBaseExtendedRemoteForFil
         String WtfValue = ("Pan");
         new RegistrationPage()
                 .openPage()
+                .clearingPageFromAdvertising()
                 .setFirstName(testData.firstName)
                 .setLastName(testData.lastName)
                 .setEmail(testData.Email)
