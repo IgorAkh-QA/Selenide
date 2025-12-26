@@ -17,11 +17,6 @@ public class TestBaseExtendedRemoteForFilingForm extends TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        ChromeOptions options = new ChromeOptions();
-        options.setPageLoadStrategy(PageLoadStrategy.EAGER);
-        Configuration.browserSize = "1920x1080";
-        Configuration.browser = "chrome";
-        Configuration.baseUrl = "https://demoqa.com";
         Configuration.remote= "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -32,10 +27,7 @@ public class TestBaseExtendedRemoteForFilingForm extends TestBase {
 
         Configuration.browserCapabilities = capabilities;
     }
-    @BeforeEach
-    void addListener() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-    }
+
     @AfterEach
     void addAttachments(){
         Attach.screenshotAs("Last screenshot");
