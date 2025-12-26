@@ -35,6 +35,7 @@ public class RegistrationPage {
         open("/automation-practice-form");
         $(".text-center").shouldHave(text(TITLE_TEXT));
         executeJavaScript("$('footer').remove()");
+        executeJavaScript("$(data-google-container-id=3).remove()");
         return this;
     }
     @Step("Вводим Имя")
