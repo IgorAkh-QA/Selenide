@@ -22,8 +22,8 @@ public class TestBase {
         ChromeOptions options = new ChromeOptions();
         options.setPageLoadStrategy(PageLoadStrategy.EAGER);
         Configuration.browserCapabilities = options;
-        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
-        Configuration.browser = System.getProperty("browser", "chrome");
+        Configuration.browserSize = System.getProperty("browser_size", "1300x720");
+        Configuration.browser = System.getProperty("browser", "opera");
         Configuration.baseUrl = "https://demoqa.com";
 
     }
