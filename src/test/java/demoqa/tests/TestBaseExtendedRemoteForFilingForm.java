@@ -20,7 +20,7 @@ public class TestBaseExtendedRemoteForFilingForm extends TestBase {
     @BeforeAll
     static void beforeAll() {
 
-        Configuration.remote= System.getProperty("remote_url", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+        Configuration.remote= System.getProperty("remote_url", "");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
