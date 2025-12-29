@@ -19,13 +19,8 @@ public class TestBaseExtendedRemoteForFilingForm extends TestBase {
 
     @BeforeAll
     static void beforeAll() {
-         String selenoidLogin = "user1";
-         String selenoidPassword = "1234";
 
-        baseUrl = System.getProperty("base_url", "selenoid.autotests.cloud/wd/hub");
-        selenoidLogin = System.getProperty("selenoid_login", selenoidLogin);
-        selenoidPassword = System.getProperty("selenoid_password", selenoidPassword);
-        Configuration.remote= "https://"+selenoidLogin+":" + selenoidPassword +"@" + baseUrl;
+        Configuration.remote= System.getProperty("remote_url", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
