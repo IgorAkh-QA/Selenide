@@ -38,7 +38,19 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+/*
+tasks.withType(Test) {
+    systemProperties(System.getProperties())
+    useJUnitPlatform()
 
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+*/
 test {
     useJUnitPlatform()
     systemProperties(System.getProperties())
@@ -49,8 +61,54 @@ tasks.register('simple_test', Test) {
         includeTags("simple")
     }
 }
+
 tasks.register('Filling_form', Test) {
-    useJUnitPlatform {
-        includeTags("Filling_form")
+        useJUnitPlatform {
+            systemProperties(System.getProperties())
+            includeTags("Filling_form")
         }
+    }
+tasks.register('one_property_test', Test) {
+        useJUnitPlatform {
+            includeTags("one_property")
+        }
+    }
+tasks.register('hello_test', Test) {
+    useJUnitPlatform {
+        systemProperties(System.getProperties())
+        includeTags("hello")
+    }
+}
+
+task ololo(type: Test) {
+    useJUnitPlatform {
+        includeTags("hello")
+        systemProperties(System.getProperties())
+        testLogging {
+            lifecycle {
+                events "started", "skipped", "failed", "standard_error", "standard_out"
+                exceptionFormat "short"
+            }
+        }
+    }
+}
+task two_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("hello")
+        includeTags("one_property")
+        systemProperties(System.getProperties())
+        testLogging {
+            lifecycle {
+                events "started", "skipped", "failed", "standard_error", "standard_out"
+                exceptionFormat "short"
+            }
+        }
+    }
+}
+
+task tag_example_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("needed", "negative")
+        excludeTags("prod")
+    }
 }

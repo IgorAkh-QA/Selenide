@@ -13,11 +13,19 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
+import static com.codeborne.selenide.Configuration.baseUrl;
+
 public class TestBaseExtendedRemoteForFilingForm extends TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.remote= "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+         String selenoidLogin = "user1";
+         String selenoidPassword = "1234";
+
+        baseUrl = System.getProperty("base_url", "selenoid.autotests.cloud/wd/hub");
+        selenoidLogin = System.getProperty("selenoid_login", selenoidLogin);
+        selenoidPassword = System.getProperty("selenoid_password", selenoidPassword);
+        Configuration.remote= "https://"+selenoidLogin+":" + selenoidPassword +"@" + baseUrl;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
