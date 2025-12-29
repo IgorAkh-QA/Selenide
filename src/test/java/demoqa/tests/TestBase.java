@@ -20,8 +20,11 @@ public class TestBase {
     @BeforeAll
     static void beforeAll() {
         ChromeOptions options = new ChromeOptions();
+        String browserVersion = System.getProperty("browserVersion","126.0");
+        options.setCapability("browserVersion", browserVersion);
         options.setPageLoadStrategy(PageLoadStrategy.EAGER);
         Configuration.browserCapabilities = options;
+
         Configuration.browserSize = System.getProperty("browser_size", "1300x720");
         Configuration.browser = System.getProperty("browser", "opera");
         Configuration.baseUrl = "https://demoqa.com";
