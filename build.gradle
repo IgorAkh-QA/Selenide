@@ -62,7 +62,7 @@ tasks.register('simple_test', Test) {
     }
 }
 
-tasks.register('Filling_form', Test) {
+tasks.register('filling_form', Test) {
         useJUnitPlatform {
             systemProperties(System.getProperties())
             includeTags("Filling_form")
