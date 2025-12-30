@@ -68,6 +68,12 @@ tasks.register('filling_form', Test) {
             includeTags("Filling_form")
         }
     }
+tasks.register('notifications', Test) {
+        useJUnitPlatform {
+            systemProperties(System.getProperties())
+            includeTags("Filling_form")
+        }
+    }
 tasks.register('one_property_test', Test) {
         useJUnitPlatform {
             includeTags("one_property")
